@@ -1,0 +1,2 @@
+x EOF causes last command to repeat forever: /Users/MCL/Dropbox/MCL-Mac/backups/scrollback/Adventure!.EOFBug
+Should reprompt after every newline, but doesn't

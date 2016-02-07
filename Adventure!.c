@@ -8,6 +8,14 @@ void scantonextline() {
 void scanpastindent() {
     scanf("%*[ \t]");
 }
+int getcommand(char *target) {
+    *target = getchar();
+    if (*target == EOF) {
+        printf("%s\n", cavebats);
+        return 0;
+    }
+    return 1;
+}
 int main() {
     // create initial rooms
     room *exit = &(room) {escape, {0, 0, 0, 0} };
@@ -21,14 +29,16 @@ int main() {
     *rooms[0] = (room) {stalactite, {rooms[4], rooms[1], 0, rooms[2]} };
     *rooms[1] = (room) {normal, {rooms[3], rooms[4], 0, rooms[0]} };
     *rooms[2] = (room) {angus, {0, rooms[0], rooms[4], 0} };
-    *rooms[3] = (room) {exitsign, {exit, rooms[5], rooms[1], 0} };
+    *rooms[3] = (room) {exitsign, {rooms[5], exit, rooms[1], 0} };
     *rooms[4] = (room) {normal, {rooms[2], 0, rooms[0], rooms[1]} };
-    *rooms[5] = (room) {falsealarm, {0, 0, 0, rooms[3]} };
+    *rooms[5] = (room) {falsealarm, {0, 0, rooms[3], 0} };
 
     printf("%s ", sign);
     char response = 0;
     scanpastindent();
-    scanf("%c", &response);
+    if (!getcommand(&response)) {
+        return 0;
+    }
     while (1) {
         if (response == 'Y' || response == 'y') {
             room *here = rooms[0];
@@ -38,7 +48,9 @@ int main() {
                 printf("Which direction do you try? [n,s,e,w] ");
                 scantonextline();
                 scanpastindent();
-                scanf(" %c", &response);
+                if (!getcommand(&response)) {
+                    return 0;
+                }
                 switch(response) {
                     case 'N':
                     case 'n':
@@ -69,7 +81,9 @@ int main() {
                         printf("%s ", ikea);
                         scantonextline();
                         scanpastindent();
-                        scanf("%c", &response);
+                        if (!getcommand(&response)) {
+                            return 0;
+                        }
                         if (response == 'N' || response == 'n') {
                             printf("%s\n", shortcut);
                             there = exit;
@@ -102,6 +116,8 @@ int main() {
         printf("%s ", sign);
         scantonextline();
         scanpastindent();
-        scanf("%c", &response);
+        if (!getcommand(&response)) {
+            return 0;
+        }
     }
 }
