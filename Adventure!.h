@@ -26,12 +26,8 @@ char *shortcut = "The IKEA elf takes you by the hand and whirls you "
                  "laptop stands.";
 char *wrongway = "You scrabble desperately at the cave wall, but all you "
                  "get out of the deal is a chipped fingernail.";
-char *cavebats = "A troop of cave bats swoops down to claim you as their "
-                 "own. As the wind ruffles your hair, all your wordly "
-                 "cares melt away and you forget about being anything "
-                 "other than a cave bat. You live out your days eating "
-                 "insects on the wing and carrying on long chirping "
-                 "conversations with your friends. You are happy.";
+char *gameover = "With a sigh and a whine of cooling pixels, the world "
+                 "fades around you."
 
 // :Room Descriptions
 char *exitsign = "A faint glow alerts you that the end is near at hand.";

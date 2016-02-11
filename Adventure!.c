@@ -11,7 +11,7 @@ void scanpastindent() {
 int getcommand(char *target) {
     *target = getchar();
     if (*target == EOF) {
-        printf("%s\n", cavebats);
+        printf("%s\n", gameover);
         return 0;
     }
     return 1;
